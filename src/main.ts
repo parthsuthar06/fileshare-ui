@@ -1,10 +1,23 @@
-import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+// import 'bootstrap/dist/js/bootstrap'
+import 'bootstrap'
 
-Vue.config.productionTip = false;
+// import plugins individually - require exports-loader
+import 'bootstrap/js/dist/modal'
+import 'bootstrap/js/dist/tooltip'
+
+// import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/scss/bootstrap.scss'
+
+// jquery
+declare var global:any
+global.$ = $
+
+Vue.config.productionTip = false
 
 new Vue({
   router,
-  render: h => h(App),
-}).$mount('#app');
+  render: h => h(App)
+}).$mount('#app')

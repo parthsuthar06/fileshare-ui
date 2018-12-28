@@ -1,8 +1,7 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Home from './views/Home.vue';
+import Vue from 'vue'
+import Router from 'vue-router'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   mode: 'history',
@@ -10,21 +9,19 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      component: () => import(/* webpackChunkName: "home" */ './home/Home.vue')
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/view-all',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      component: () => import(/* webpackChunkName: "viewAll" */ './view-all/ViewAll.vue')
     },
     {
-      path: '/upload',
-      name: 'upload',
-      component: () => import('./components/Upload.vue'),
+      path: '/delete-file/:id',
+      component: () => import(/* webpackChunkName: "deleteFile" */ './delete-file/DeleteFile.vue')
     },
-  ],
-});
+    { path: '*', redirect: '/' }
+  ]
+})
